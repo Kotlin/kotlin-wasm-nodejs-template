@@ -24,7 +24,7 @@ To build and run the application:
 1. In IntelliJ IDEA, open the repository.
 2. Run the application by typing the following Gradle command in the terminal:
 
-   `./gradlew wasmJsNodeRun`
+   `./gradlew wasmJsNodeProductionRun`
 
 ## Feedback and questions
 
