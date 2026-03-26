@@ -21,3 +21,8 @@ kotlin {
         }
     }
 }
+
+// Uncomment to turn on stack-switching support
+// tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().configureEach {
+//     compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-coroutines-stack-switching"))
+// }
