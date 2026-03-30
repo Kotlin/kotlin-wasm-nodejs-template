@@ -27,7 +27,7 @@ fun KotlinWasmWasiTargetDsl.wasmtime(version: String) {
         download { os: String, arch: String, version: String ->
             val artifactName = artifactFileName(os, arch, version)
 
-            "https://github.com/bytecodealliance/wasmtime/releases/download/v$version/$artifactName"
+            "https://github.com/bytecodealliance/wasmtime/releases/download/$version/$artifactName"
         }
 
         archiveOperation { archiveOperation, entry ->
@@ -60,7 +60,7 @@ fun KotlinWasmWasiTargetDsl.wasmtime(version: String) {
             val newArgs = mutableListOf<String>()
 
             newArgs.add("-W")
-            newArgs.add("function-references,gc,exceptions")
+            newArgs.add("function-references,gc,exceptions,stack-switching")
 
 
             newArgs.add("--invoke")
@@ -75,7 +75,7 @@ fun KotlinWasmWasiTargetDsl.wasmtime(version: String) {
             val newArgs = mutableListOf<String>()
 
             newArgs.add("-W")
-            newArgs.add("function-references,gc,exceptions")
+            newArgs.add("function-references,gc,exceptions,stack-switching")
 
 
             newArgs.add("--invoke")
@@ -132,5 +132,5 @@ private fun artifactName(os: String, arch: String, version: String): String {
         else -> error("unsupported os type $os, $arch")
     }
 
-    return "wasmtime-v$version-$wasmtimeSuffix"
+    return "wasmtime-$version-$wasmtimeSuffix"
 }
