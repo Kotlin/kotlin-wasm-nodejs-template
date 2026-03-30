@@ -24,7 +24,17 @@ To build and run the application:
 1. In IntelliJ IDEA, open the repository.
 2. Run the application by typing the following Gradle command in the terminal:
 
-   `./gradlew wasmJsNodeProductionRun`
+   `./gradlew wasmJsNodeProductionRun` - running `node` engine for `wasmJs` target
+   `./gradlew wasmWasmtimeProductionRun` - running `wasmtime` engine for `wasmWasi` target
+
+3. You can uncomment the following code in [build.gradle.kts](build.gradle.kts) to enable Stack Switching coroutine generation
+```
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().configureEach {
+    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-coroutines-stack-switching"))
+}
+```
+
+4. In [gradle/libs.versions.toml](gradle/libs.versions.toml) you can change version of wasmtime to run on
 
 ## Feedback and questions
 
