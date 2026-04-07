@@ -49,6 +49,10 @@ kotlin {
 //    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-coroutines-stack-switching"))
 //}
 
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().matching { it.name.contains("wasmWasi", ignoreCase = true) }.configureEach {
+    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-use-new-exception-proposal=false"))
+}
+
 enum class OsName { WINDOWS, MAC, LINUX, UNKNOWN }
 enum class OsArch { X86_32, X86_64, ARM64, UNKNOWN }
 data class OsType(val name: OsName, val arch: OsArch)
