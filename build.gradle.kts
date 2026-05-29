@@ -175,3 +175,7 @@ tasks.withType<NodeJsExec>().matching { it.name.contains("wasmWasi", ignoreCase 
         )
     }
 }
+
+ tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().matching { it.name.contains("wasmWasi", ignoreCase = true) }.configureEach {
+    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-use-new-exception-proposal=false"))
+}
