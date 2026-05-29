@@ -14,22 +14,16 @@ fun main() {
 }
 
 fun testSequence() {
-    val fibonacci = sequence {
-        var a = 0
-        var b = 1
-        yield(a)
-        yield(b)
+    val range = sequence {
+        var i = 0
         while (true) {
-            val next = a + b
-            yield(next)
-            a = b
-            b = next
+            yield(i++)
         }
     }
 
     var sum = 0
     val duration = measureTime {
-        sum = fibonacci.take(10_000_000).sum()
+        sum = range.take(10_000_000).sum()
         
     }
 
