@@ -4,7 +4,9 @@ import org.gradle.internal.os.OperatingSystem
 import de.undercouch.gradle.tasks.download.Download
 import org.gradle.api.internal.file.archive.compression.*
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.binaryen.BinaryenRootEnvSpec
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsExec
+import org.jetbrains.kotlin.gradle.targets.wasm.binaryen.BinaryenPlugin
 import java.io.*
 import java.net.*
 import java.util.Locale
@@ -44,9 +46,12 @@ kotlin {
     }
 }
 
+apply<BinaryenPlugin>()
+the<BinaryenRootEnvSpec>().version.set(libs.versions.binaryen.get())
+
 // Uncomment to turn on stack-switching support
 //tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().configureEach {
-//    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-coroutines-stack-switching"))
+//    compilerOptions.freeCompilerArgs.addAll(listOf("-Xwasm-use-stack-switching-proposal"))
 //}
 
 tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().matching { it.name.contains("wasmWasi", ignoreCase = true) }.configureEach {
