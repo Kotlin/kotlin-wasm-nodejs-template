@@ -1,15 +1,20 @@
 import kotlinx.coroutines.*
+import mymodule.bar
 import kotlin.time.measureTime
 
 fun main() {
     println("Hello from Kotlin/Wasm")
 
-    println("\n--- Sequence aka generator ---") 
+    println("\n--- Sequence aka generator ---")
+
     testSequence()
-    
+
     println("\n--- Coroutines ---")
     MainScope().launch {
         testCoroutines()
+
+        println("\n--- bar() from mymodule ---")
+        bar()
     }
 }
 
