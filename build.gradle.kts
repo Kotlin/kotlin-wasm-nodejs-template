@@ -1,5 +1,3 @@
-@file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
 }
