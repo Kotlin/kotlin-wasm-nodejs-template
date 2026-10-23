@@ -1,4 +1,4 @@
-rootProject.name = "kotlin-wasm-nodejs-example"
+rootProject.name = "kotlin-wasm-nodejs-template"
 
 pluginManagement {
     repositories {
